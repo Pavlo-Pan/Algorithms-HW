@@ -1,0 +1,18 @@
+{
+  "name": "hw1",
+  "version": "1.0.0",
+  "description": "Простой проект на TypeScript: получаем три целых числа от пользователя, складываем их и выводим результат.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/readline-sync": "^1.4.8",
+    "readline-sync": "^1.4.10"
+  }
+}
