@@ -10,7 +10,7 @@
 hw1/
 ├— index.ts
 ├— package.json
-├— tsconfig.json
+├— .gitignore
 ├— package-lock.json
 └— README.md
 ```
@@ -62,9 +62,9 @@ npx tsc --init
 ```ts
 import * as readline from 'readline-sync';
 
-const num1: number = parseInt(readline.question("Write first number (by default 5): ", { defaultInput: "5" }), 10);
-const num2: number = parseInt(readline.question("Write second number (by default 6): ", { defaultInput: "6" }), 10);
-const num3: number = parseInt(readline.question("Write third number (by default 7): ", { defaultInput: "7" }), 10);
+const num1: number = parseInt(readline.question("Write first number (by default 5 push Enter): ", { defaultInput: "5" }), 10);
+const num2: number = parseInt(readline.question("Write second number (by default 6 push Enter): ", { defaultInput: "6" }), 10);
+const num3: number = parseInt(readline.question("Write third number (by default 7 push Enter): ", { defaultInput: "7" }), 10);
 
 const sum: number = num1 + num2 + num3;
 
@@ -100,16 +100,3 @@ Sum of three numbers: 18
 npx ts-node index.ts
 ```
 
----
-
-## 🛉 Удаление собранных файлов
-
-```bash
-rm index.js
-```
-
----
-
-## 📚 Лицензия
-
-MIT
