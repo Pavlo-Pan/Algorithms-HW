@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Letter Frequency Histogram</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Частотный словарь букв</h2>
+  <textarea id="inputText" placeholder="Введите текст на английском или немецком..."></textarea>
+  <button onclick="analyze()">Построить гистограмму</button>
+  <canvas id="canvas" width="900" height="400"></canvas>
+
+  <script>
+    function analyze() {
+      const text = document.getElementById("inputText").value.toLowerCase();
+      const freq = {};
+
+      // Считаем только буквы a-z и немецкие: äöüß
+      for (let char of text) {
+        if (char.match(/[a-zäöüß]/)) {
+          freq[char] = (freq[char] || 0) + 1;
+        }
+      }
+
+      drawHistogram(freq);
+    }
+
+    function drawHistogram(freq) {
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const letters = Object.keys(freq).sort();
+      const maxFreq = Math.max(...Object.values(freq));
+      const barWidth = canvas.width / letters.length;
+
+      letters.forEach((letter, i) => {
+        const barHeight = (freq[letter] / maxFreq) * (canvas.height - 40);
+        const x = i * barWidth;
+        const y = canvas.height - barHeight - 20;
+
+        // Рисуем столбик
+        ctx.fillStyle = "#4285F4";
+        ctx.fillRect(x + 2, y, barWidth - 4, barHeight);
+
+        // Подпись под буквой
+        ctx.fillStyle = "#000";
+        ctx.font = "14px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(letter, x + barWidth / 2, canvas.height - 5);
+      });
+    }
+  </script>
+</body>
+</html>
